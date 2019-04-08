@@ -4,20 +4,22 @@ import java.util.List;
 
 public class Distance {
 
-    List<? extends Number> distances;
+    List<DistanceMap> distances;
 
-    public Distance(List<? extends Number> distances) {
+    public Distance(List<DistanceMap> distances) {
         this.distances = distances;
     }
 
-    public List<? extends Number> getDistances() {
+    public List<DistanceMap> getDistances() {
         return distances;
     }
 
-    public void setDistances(List<? extends Number> distances) {
+    public void setDistances(List<DistanceMap> distances) {
         this.distances = distances;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Distance{" + "distances=" + distances + '}';
+    }
 }

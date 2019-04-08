@@ -1,9 +1,6 @@
 package com.sortutils.component;
 
 
-import com.sortutils.entity.Distance;
-import com.sortutils.util.JsonUtils;
-import com.sortutils.util.MapperUtils;
 import com.sortutils.entity.SortResponse;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -86,19 +83,5 @@ public class InsertionSort extends AbstractSort implements InstrumentationSort {
     }
 
 
-    public static void main(String[] args) {
-        String jsonText = "{'distances': ['2.8',2,1.0, 0.0, 1, 1.2, 1.5, -1.4,7,1.1,7,'0.6']}";
 
-        MapperUtils mapperUtils = new MapperUtils();
-        Distance distance = mapperUtils.deserialize(jsonText);
-        double[] arr = mapperUtils.map(distance);
-
-        InsertionSort ins = new InsertionSort();
-        MergeSort mergeSort = new MergeSort();
-
-
-        System.out.println(new JsonUtils().toJson(mergeSort.execute(arr)));
-
-
-    }
 }
