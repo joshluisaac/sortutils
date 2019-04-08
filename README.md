@@ -1,13 +1,16 @@
 
 ## PROJECT INTENT AND SOME BACKGROUND
 
-[![Build Status](https://travis-ci.org/joshluisaac/arraysort.svg?branch=master)](https://travis-ci.org/joshluisaac/arraysort)
 
-The intent of this project is to allow the user to sort a collection of integers in the most efficient way.
+The intent of this project is to allow the user to sort a collection of distances in the most efficient way.
 Efficient in this context is defined in terms of time and space complexity.
 
-I scoped the problem as a merge sort problem and implemented it in accordance to the
+I scoped the problem as a merge and insertion sort problem and implemented the merge sort in accordance to the
 divide and conquer algorithm that was proposed and invented by John von Neumann in 1945.
+
+What determines which algorithm would be used, depends on the size of `INSERTIONSORT_THRESHOLD`
+located in [SortDistanceApp.java](src/main/java/com/sortutils/SortDistanceApp.java). This value is internally defaulted to 7.
+This meas that if the sample data size is less than 7 insertion sort is used other wise merge sort is preferred.
 
 The algorithm offers __O(n log(n))__ performance in all cases (worst,average and best case) and is better suited for
 sorting large collection of integers. Other sorting algorithms such as insertion sort, radix sort or bubble sort yields a
