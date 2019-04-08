@@ -1,4 +1,6 @@
-package com.sortutils;
+package com.sortutils.component;
+
+import com.sortutils.entity.SortResponse;
 
 public interface InstrumentationSort {
 

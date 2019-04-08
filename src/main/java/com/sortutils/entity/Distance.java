@@ -1,4 +1,4 @@
-package com.sortutils;
+package com.sortutils.entity;
 
 import java.util.List;
 

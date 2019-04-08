@@ -1,6 +1,15 @@
-package com.sortutils;
+package com.sortutils.entity;
 
 //A POJO object representing sort response details
+
+/**
+ * A POJO entity representing sort response details
+ *
+ *
+ * @author Joshua Nwankwo
+ * @version 1.0
+ * @since April 2019
+ */
 
 public class SortResponse {
 

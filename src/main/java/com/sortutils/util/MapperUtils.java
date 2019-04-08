@@ -1,4 +1,6 @@
-package com.sortutils;
+package com.sortutils.util;
+
+import com.sortutils.entity.Distance;
 
 import java.util.List;
 

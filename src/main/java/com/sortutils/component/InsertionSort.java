@@ -1,6 +1,10 @@
-package com.sortutils;
+package com.sortutils.component;
 
 
+import com.sortutils.entity.Distance;
+import com.sortutils.util.JsonUtils;
+import com.sortutils.util.MapperUtils;
+import com.sortutils.entity.SortResponse;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
@@ -90,9 +94,10 @@ public class InsertionSort extends AbstractSort implements InstrumentationSort {
         double[] arr = mapperUtils.map(distance);
 
         InsertionSort ins = new InsertionSort();
+        MergeSort mergeSort = new MergeSort();
 
 
-        System.out.println(new JsonUtils().toJson(ins.execute(arr)));
+        System.out.println(new JsonUtils().toJson(mergeSort.execute(arr)));
 
 
     }

@@ -1,4 +1,4 @@
-package com.sortutils;
+package com.sortutils.component;
 
 public interface IMergeSort extends InstrumentationSort {
 
