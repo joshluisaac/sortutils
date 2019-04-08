@@ -155,6 +155,11 @@ mvn javadoc:javadoc
 
 The result is put in `/target/site/apidocs`
 
+
+Running the code coverage.
+--------------------------
+Execute `mvn cobertura:cobertura` to generate the code/test coverage report. The output is located in `target/site/cobertura/`
+
 Building the source code without tests
 --------------------------------------
 
@@ -178,7 +183,7 @@ mvn clean install
 ```
 This will run all the tests in `src/test/java` directory and you will see an output like this below.
 
-## Test logs
+### Test logs
 ```
 -------------------------------------------------------
  T E S T S
