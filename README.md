@@ -1,6 +1,8 @@
 
 ## PROJECT INTENT AND SOME BACKGROUND
 
+[![Build Status](https://travis-ci.org/joshluisaac/sortutils.svg?branch=master)](https://travis-ci.org/joshluisaac/sortutils)
+
 
 The intent of this project is to allow the user to sort a collection of distances in the most efficient way.
 Efficient in this context is defined in terms of time and space complexity. It will first convert all distances (provided the distances are
