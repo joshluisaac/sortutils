@@ -2,6 +2,15 @@ package com.sortutils.entity;
 
 import java.util.List;
 
+/**
+ * A POJO entity representing a distance model
+ *
+ *
+ * @author Joshua Nwankwo
+ * @version 1.0
+ * @since April 2019
+ */
+
 public class Distance {
 
     List<DistanceMap> distances;

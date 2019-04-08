@@ -1,7 +1,5 @@
 package com.sortutils.entity;
 
-//A POJO object representing sort response details
-
 /**
  * A POJO entity representing sort response details
  *

@@ -1,5 +1,14 @@
 package com.sortutils.entity;
 
+/**
+ * A POJO entity representing a distance map model
+ *
+ *
+ * @author Joshua Nwankwo
+ * @version 1.0
+ * @since April 2019
+ */
+
 public class DistanceMap<K, V> {
 
     public K key;
