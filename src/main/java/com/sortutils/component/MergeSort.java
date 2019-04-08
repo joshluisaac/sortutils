@@ -3,8 +3,7 @@ package com.sortutils.component;
 import com.sortutils.entity.SortResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+
 
 /**
  * An implementation of {@link} that contains methods for performing merge sort.
@@ -23,8 +22,8 @@ import org.springframework.stereotype.Component;
  * @since April 2019
  */
 
-@Component("MergeSort")
-@Qualifier("MergeSort")
+//@Component("MergeSort")
+//@Qualifier("MergeSort")
 public class MergeSort extends AbstractSort implements IMergeSort {
 
     private static final Logger LOG = LoggerFactory.getLogger(MergeSort.class);

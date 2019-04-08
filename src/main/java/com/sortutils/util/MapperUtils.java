@@ -27,7 +27,6 @@ public class MapperUtils {
         int size = distance.getDistances().size();
         double[] arr = new double[size];
         List<DistanceMap> list = distance.getDistances();
-        System.out.println(list.get(0));
         for (int i = 0; i < size; i++) {
             DistanceMap distanceMap =  list.get(i);
             if (distanceMap.key.equals(DistanceUnitType.KM.getCode())) {

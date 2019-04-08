@@ -16,27 +16,6 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-tomcat</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jetty</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.spockframework</groupId>
 			<artifactId>spock-core</artifactId>
 			<version>1.2-groovy-2.4</version>
@@ -69,29 +48,8 @@
 			<version>2.8.5</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-core</artifactId>
-			<version>4.1</version>
-			<scope>test</scope>
-		</dependency>
-
-
 	</dependencies>
 
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<!-- Import dependency management from Spring Boot -->
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>1.5.9.RELEASE</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 
 	<reporting>
@@ -104,13 +62,10 @@
 		</plugins>
 	</reporting>
 
-
 <build>
 
 
 	<plugins>
-
-
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-site-plugin</artifactId>
@@ -121,12 +76,6 @@
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-project-info-reports-plugin</artifactId>
 			<version>3.0.0</version>
-		</plugin>
-
-		<plugin>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-maven-plugin</artifactId>
-			<version>1.5.9.RELEASE</version>
 		</plugin>
 
 		<!-- Maven groovy Plugin -->
@@ -193,7 +142,7 @@
 						<transformers>
 							<!-- add Main-Class to manifest file -->
 							<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-								<mainClass>com.sorting.SortingApplicationCli</mainClass>
+								<mainClass>com.sortutils.SortDistanceApp</mainClass>
 							</transformer>
 						</transformers>
 					</configuration>

@@ -33,7 +33,7 @@ public class SortDistanceApp {
 
     public static void main(String[] args) {
 
-        String maybeJson = args[0];
+        String maybeJson = JsonSampleDocument.JSON_TEXT;
 
         /* Parse and validate input string */
         boolean isValidJson = InputValidationParser.isValidJson(maybeJson);

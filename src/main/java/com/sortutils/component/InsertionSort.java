@@ -2,8 +2,7 @@ package com.sortutils.component;
 
 
 import com.sortutils.entity.SortResponse;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+
 
 
 /**
@@ -21,8 +20,8 @@ import org.springframework.stereotype.Component;
  * @since April 2019
  */
 
-@Component
-@Qualifier("InsertionSort")
+//@Component
+//@Qualifier("InsertionSort")
 public class InsertionSort extends AbstractSort implements InstrumentationSort {
 
 
