@@ -4,6 +4,7 @@ import com.sortutils.entity.Distance;
 import com.sortutils.entity.DistanceMap;
 import com.sortutils.entity.DistanceUnitType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MapperUtils {
@@ -23,31 +24,59 @@ public class MapperUtils {
      * @param distance
      * @return array of primitive type double.
      */
-    public double[] map(Distance distance){
+    public List<Double> map(Distance distance){
         int size = distance.getDistances().size();
         double[] arr = new double[size];
         List<DistanceMap> list = distance.getDistances();
+        List<Double> maybeDuplicate = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             DistanceMap distanceMap =  list.get(i);
             if (distanceMap.key.equals(DistanceUnitType.KM.getCode())) {
                 double d = Double.parseDouble(distanceMap.getValue().toString()) * 1000000;
-                arr[i] = d;
+                maybeDuplicate.add(d);
+                //arr[i] = d;
             }
             if (distanceMap.key.equals(DistanceUnitType.M.getCode())) {
                 double d = Double.parseDouble(distanceMap.getValue().toString()) * 1000;
-                arr[i] = d;
+                maybeDuplicate.add(d);
+                //arr[i] = d;
             }
             if (distanceMap.key.equals(DistanceUnitType.CM.getCode())) {
                 double d = Double.parseDouble(distanceMap.getValue().toString()) * 10;
-                arr[i] = d;
+                maybeDuplicate.add(d);
+                //arr[i] = d;
             }
             if (distanceMap.key.equals(DistanceUnitType.MM.getCode())) {
                 double d = Double.parseDouble(distanceMap.getValue().toString()) * 1;
-                arr[i] = d;
+                maybeDuplicate.add(d);
+                //arr[i] = d;
             }
+        }
+        return  maybeDuplicate;
+    }
+
+
+
+    /**
+     * Maps a unique list of {@link Double} to an array of doubles
+     * @param unique unique list
+     * @return array of primitive type double.
+     */
+    public double[] toArray(List<Double> unique){
+        int size = unique.size();
+        double[] arr = new double[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = unique.get(i);
         }
         return  arr;
     }
+
+
+
+
+
+
+
 
 
 

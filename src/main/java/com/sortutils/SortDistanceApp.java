@@ -6,10 +6,13 @@ import com.sortutils.component.MergeSort;
 import com.sortutils.entity.Distance;
 import com.sortutils.entity.SortResponse;
 import com.sortutils.parser.InputValidationParser;
+import com.sortutils.util.DistanceUtils;
 import com.sortutils.util.JsonUtils;
 import com.sortutils.util.MapperUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 public class SortDistanceApp {
 
@@ -44,8 +47,14 @@ public class SortDistanceApp {
             //deserialize raw json document to custom type
             Distance distance = mapperUtils.deserialize(maybeJson);
 
+            //remove duplicates
+            List<Double> unique = DistanceUtils.unique(mapperUtils.map(distance));
+
+            System.out.println("Raw list: " + maybeJson);
+            System.out.println("Unique list: " + unique.toString());
+
             //map distance to same types to facilitate comparison
-            double[] arr = mapperUtils.map(distance);
+            double[] arr = mapperUtils.toArray(unique);
 
             //sort response
             SortResponse response;
@@ -55,7 +64,8 @@ public class SortDistanceApp {
             } else {
                 response =  new SortDistanceApp(new MergeSort()).execute(arr);
             }
-            System.out.println(new JsonUtils().toJson(response));
+            System.out.println("Sorted result: " + response.sortResult);
+            System.out.println("Response payload: " + new JsonUtils().toJson(response));
         } else {
             LOG.error("{} is not a valid JSON formatted string.", maybeJson);
         }
