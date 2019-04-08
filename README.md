@@ -76,11 +76,14 @@ Response payload: {
 }
 
 ```
-
->> 1. `count:` this is the minimum number of iterations.
->> 2. `sortResult`: this is the sorted integer array
->> 3. `runningTime`: Running time, how long it took to execute.
->> 4. `arraySize`: the size of the input array.
+>> 1. The raw `JSON` unsorted list of distances.
+>> 1. Unique list: what is left after removing duplicates.
+>> 1. Sorted result: the sorted result output
+>> 1. Response payload: Complete response with extra meta data.
+>>> 1. `count:` this is the minimum number of iterations.
+>>> 2. `sortResult`: this is the sorted integer array
+>>> 3. `runningTime`: Running time, how long it took to execute.
+>>> 4. `arraySize`: the size of the input array after removing duplicates.
 
 
 
