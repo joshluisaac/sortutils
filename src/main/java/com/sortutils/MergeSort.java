@@ -1,16 +1,13 @@
-package com.sorting.components;
+package com.sortutils;
 
-import com.sorting.model.SortResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
-import java.util.List;
-
 /**
- * An implementation of {@link IMergeSort} that contains methods for performing
+ * An implementation of {@link} that contains methods for performing
  * merge sort.
  *
  * <p>
@@ -31,8 +28,7 @@ import java.util.List;
 @Qualifier("MergeSort")
 public class MergeSort {
 
-    //public class MergeSort extends AbstractSort implements IMergeSort {
-
+    //public class MergeSort extends AbstractSort implements IMergeSort
     private static final Logger LOG = LoggerFactory.getLogger(MergeSort.class);
     private int count = -1;
 
@@ -42,8 +38,8 @@ public class MergeSort {
      * @param arr the input array
      * @return the array midpoint
      */
-    public <T> int calculateMidPoint(List<T> arr) {
-        return arr.size() / 2;
+    public int calculateMidPoint(int[] arr) {
+        return arr.length / 2;
     }
 
     /**
@@ -55,10 +51,9 @@ public class MergeSort {
      * @param arr      the parent array
      * @return resultant left array
      */
-    public <T> List<T>  loadLeftArray(int midPoint, List<T> left, List<T> arr) {
-        //Collections.sort();
+    public int[] loadLeftArray(int midPoint, int[] left, int[] arr) {
         for (int i = 0; i < midPoint; i++) {
-            left.add(arr.get(i));
+            left[i] = arr[i];
         }
         return left;
     }
@@ -71,10 +66,9 @@ public class MergeSort {
      * @param arr   the parent array
      * @return resultant right array
      */
-    public <T> List<T> loadRightArray(List<T> right, List<T> arr) {
-        for (int i = 0; i < right.size(); i++) {
-            int arrPtr = ((arr.size() - right.size()) + i);
-            right.add(arr.get(arrPtr));
+    public int[] loadRightArray(int[] right, int[] arr) {
+        for (int i = 0; i < right.length; i++) {
+            right[i] = arr[((arr.length - right.length) + i)];
         }
         return right;
     }
@@ -90,11 +84,11 @@ public class MergeSort {
      * @param arr      the parent array
      * @return the right array
      */
-    public <T> T[] constructRightArray(int midPoint, T[] arr) {
+    public int[] constructRightArray(int midPoint, int[] arr) {
         if (arr.length % 2 == 0) {
-            return T[midPoint];
+            return new int[midPoint];
         } else {
-            return new T[midPoint + 1];
+            return new int[midPoint + 1];
         }
     }
 
@@ -109,8 +103,8 @@ public class MergeSort {
      * @return the sorted array
      */
 
-    @Override
-    public <T> T[] sort(T[] arr) {
+    //@Override
+    public int[] sort(int[] arr) {
         /* base case condition */
         if (arr.length <= 1)
             return arr;
@@ -138,7 +132,7 @@ public class MergeSort {
      * @param rightArr the right array fragment
      * @return the result of merging both arrays
      */
-    public <T> T[] merge(T[] leftArr, T[] rightArr) {
+    public int[] merge(int[] leftArr, int[] rightArr) {
 
         // result which is an ascending array
         int[] result = new int[leftArr.length + rightArr.length];
@@ -184,11 +178,11 @@ public class MergeSort {
      * @param arr raw input array
      * @return returns {@link SortResponse} which contains a bunch of properties
      */
-    @Override
-    public <T> SortResponse execute(T[] arr) {
-        SortResponse response = super.execute(arr);
-        response.setCount(count);
-        return response;
-    }
+    //@Override
+    //public SortResponse execute(int[] arr) {
+        //SortResponse response = super.execute(arr);
+        //response.setCount(count);
+        //return response;
+    //}
 
 }

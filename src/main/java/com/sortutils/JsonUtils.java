@@ -1,4 +1,4 @@
-package com.sorting.utils;
+package com.sortutils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -1,9 +1,10 @@
-package com.sorting.model;
+package com.sortutils;
 
 //A POJO object representing sort response details
 
 public class SortResponse {
 
+    //number of iterations to get this into sorted state
     public int count;
     public String sortResult;
     public String input;

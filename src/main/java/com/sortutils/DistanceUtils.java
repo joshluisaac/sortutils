@@ -1,4 +1,4 @@
-package com.sorting.utils;
+package com.sortutils;
 
 public class DistanceUtils {
 
