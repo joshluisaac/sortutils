@@ -1,14 +1,12 @@
 package com.sortutils;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
- * An implementation of {@link} that contains methods for performing
- * merge sort.
+ * An implementation of {@link} that contains methods for performing merge sort.
  *
  * <p>
  * The algorithm uses a divide and conquer technique which was invented by John
@@ -21,16 +19,14 @@ import org.springframework.stereotype.Component;
  *
  * @author Joshua Nwankwo
  * @version 1.0
- * @since March 2019
+ * @since April 2019
  */
 
 @Component("MergeSort")
 @Qualifier("MergeSort")
-public class MergeSort {
+public class MergeSort extends AbstractSort implements IMergeSort {
 
-    //public class MergeSort extends AbstractSort implements IMergeSort
     private static final Logger LOG = LoggerFactory.getLogger(MergeSort.class);
-    private int count = -1;
 
     /**
      * Calculates and returns an array midpoint.
@@ -38,7 +34,7 @@ public class MergeSort {
      * @param arr the input array
      * @return the array midpoint
      */
-    public int calculateMidPoint(int[] arr) {
+    public int calculateMidPoint(double[] arr) {
         return arr.length / 2;
     }
 
@@ -51,7 +47,7 @@ public class MergeSort {
      * @param arr      the parent array
      * @return resultant left array
      */
-    public int[] loadLeftArray(int midPoint, int[] left, int[] arr) {
+    public double[] loadLeftArray(int midPoint, double[] left, double[] arr) {
         for (int i = 0; i < midPoint; i++) {
             left[i] = arr[i];
         }
@@ -66,7 +62,7 @@ public class MergeSort {
      * @param arr   the parent array
      * @return resultant right array
      */
-    public int[] loadRightArray(int[] right, int[] arr) {
+    public double[] loadRightArray(double[] right, double[] arr) {
         for (int i = 0; i < right.length; i++) {
             right[i] = arr[((arr.length - right.length) + i)];
         }
@@ -84,11 +80,11 @@ public class MergeSort {
      * @param arr      the parent array
      * @return the right array
      */
-    public int[] constructRightArray(int midPoint, int[] arr) {
+    public double[] constructRightArray(int midPoint, double[] arr) {
         if (arr.length % 2 == 0) {
-            return new int[midPoint];
+            return new double[midPoint];
         } else {
-            return new int[midPoint + 1];
+            return new double[midPoint + 1];
         }
     }
 
@@ -103,15 +99,15 @@ public class MergeSort {
      * @return the sorted array
      */
 
-    //@Override
-    public int[] sort(int[] arr) {
+    // @Override
+    public double[] sort(double[] arr) {
         /* base case condition */
         if (arr.length <= 1)
             return arr;
 
         int midPoint = calculateMidPoint(arr);
-        int[] left = new int[midPoint];
-        int[] right = constructRightArray(midPoint, arr);
+        double[] left = new double[midPoint];
+        double[] right = constructRightArray(midPoint, arr);
 
         /* populate left & right arrays */
         left = loadLeftArray(midPoint, left, arr);
@@ -121,8 +117,8 @@ public class MergeSort {
     }
 
     /**
-     * Will merge the left and right sides of the array.
-     * This will merge left and right array fragments that are on the same level.
+     * Will merge the left and right sides of the array. This will merge left and
+     * right array fragments that are on the same level.
      *
      * The leftPtr, rightPtr and resultPtr cannot possibly exceed the length of
      * their respective arrays.
@@ -132,10 +128,10 @@ public class MergeSort {
      * @param rightArr the right array fragment
      * @return the result of merging both arrays
      */
-    public int[] merge(int[] leftArr, int[] rightArr) {
+    public double[] merge(double[] leftArr, double[] rightArr) {
 
         // result which is an ascending array
-        int[] result = new int[leftArr.length + rightArr.length];
+        double[] result = new double[leftArr.length + rightArr.length];
 
         // pointer to the current position in left array
         int leftPtr = 0;
@@ -178,11 +174,11 @@ public class MergeSort {
      * @param arr raw input array
      * @return returns {@link SortResponse} which contains a bunch of properties
      */
-    //@Override
-    //public SortResponse execute(int[] arr) {
-        //SortResponse response = super.execute(arr);
-        //response.setCount(count);
-        //return response;
-    //}
+    @Override
+    public SortResponse execute(double[] arr) {
+    SortResponse response = super.execute(arr);
+    response.setCount(count);
+    return response;
+    }
 
 }
