@@ -11,7 +11,7 @@ public class DistanceUtils {
      * @param list list of items
      * @return unique list of the specified type
      */
-    public static <T> List<T> unique(List<T> list) {
+    public <T> List<T> unique(List<T> list) {
         List<T> tmp = new ArrayList<>();
         for (T x : list) {
             if (!tmp.contains(x)) {

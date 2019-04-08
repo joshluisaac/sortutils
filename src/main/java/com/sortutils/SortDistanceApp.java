@@ -48,7 +48,7 @@ public class SortDistanceApp {
             Distance distance = mapperUtils.deserialize(maybeJson);
 
             //remove duplicates
-            List<Double> unique = DistanceUtils.unique(mapperUtils.map(distance));
+            List<Double> unique = new DistanceUtils().unique(mapperUtils.map(distance));
 
             System.out.println("Raw list: " + maybeJson);
             System.out.println("Unique list: " + unique.toString());

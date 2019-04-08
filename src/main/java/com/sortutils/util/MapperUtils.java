@@ -1,14 +1,19 @@
 package com.sortutils.util;
 
+
 import com.sortutils.entity.Distance;
 import com.sortutils.entity.DistanceMap;
 import com.sortutils.entity.DistanceUnitType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MapperUtils {
 
+    private static final Logger LOG = LoggerFactory.getLogger(MapperUtils.class);
 
     /**
      * Deserializes the raw JSON input request string to specific/custom type.
@@ -26,7 +31,6 @@ public class MapperUtils {
      */
     public List<Double> map(Distance distance){
         int size = distance.getDistances().size();
-        double[] arr = new double[size];
         List<DistanceMap> list = distance.getDistances();
         List<Double> maybeDuplicate = new ArrayList<>();
         for (int i = 0; i < size; i++) {
@@ -35,17 +39,21 @@ public class MapperUtils {
                 double d = Double.parseDouble(distanceMap.getValue().toString()) * 1000000;
                 maybeDuplicate.add(d);
             }
-            if (distanceMap.key.equals(DistanceUnitType.M.getCode())) {
+            else if (distanceMap.key.equals(DistanceUnitType.M.getCode())) {
                 double d = Double.parseDouble(distanceMap.getValue().toString()) * 1000;
                 maybeDuplicate.add(d);
             }
-            if (distanceMap.key.equals(DistanceUnitType.CM.getCode())) {
+            else if (distanceMap.key.equals(DistanceUnitType.CM.getCode())) {
                 double d = Double.parseDouble(distanceMap.getValue().toString()) * 10;
                 maybeDuplicate.add(d);
             }
-            if (distanceMap.key.equals(DistanceUnitType.MM.getCode())) {
+            else if (distanceMap.key.equals(DistanceUnitType.MM.getCode())) {
                 double d = Double.parseDouble(distanceMap.getValue().toString()) * 1;
                 maybeDuplicate.add(d);
+            } else {
+                LOG.error("{} is not a valid DistanceUnitType", distanceMap.key.toString());
+                throw new IllegalArgumentException("The argument specified is not a valid DistanceUnitType");
+
             }
         }
         return  maybeDuplicate;

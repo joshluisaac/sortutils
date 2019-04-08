@@ -120,6 +120,27 @@ Response payload: {
 >>> 4. `arraySize`: the size of the input array after removing duplicates.
 
 
+Type checking:
+-----------------
+These are the valid keys `km,mm,m,cm` anything outside this boundary will throw an `java.lang.IllegalArgumentException`
+
+For example
+
+Executing a command like this will throw a runtime exception.
+
+```shell
+java -jar target/sortutils-0.0.1-SNAPSHOT.jar "{\"distances\":[{\"key\":\"kcm\",\"value\":1.367}]}"
+
+```
+
+```java
+2019-04-08 17:02:33,919 ERROR kcm is not a valid DistanceUnitType
+Exception in thread "main" java.lang.IllegalArgumentException: The argument specified is not a valid DistanceUnitType
+        at com.sortutils.util.MapperUtils.map(MapperUtils.java:55)
+        at com.sortutils.SortDistanceApp.main(SortDistanceApp.java:51)
+```
+
+
 Building the API docs
 ---------------------
 
