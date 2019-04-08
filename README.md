@@ -34,35 +34,47 @@ Maven will automatically download all required dependencies, compile the project
 
 Prerequisites
 -------------
-- JDK 7 or higher
+- JDK 8 or higher
 - Maven use `mvnw` wrapper
+
+Building the application and copying the dependencies
+-----------------------------------------------------
+Run this command below to build and copy the dependencies to project `lib` directory.
+
+```shell
+mvn clean install dependency:copy-dependencies
+```
+
+After building you will find the complied jar loated in `target/sortutils-0.0.1-SNAPSHOT.jar`
 
 Executing the application
 -------------------------
 
-To sort an array of integer numbers follow these steps:
+1. First prepare your unsorted list of distances. A sample of this is located here [inputsample.json](inputsample.json)
 
-1. First update __line 29__ of the main method in [SortingApplicationCli.java](src/main/java/com/sorting/SortingApplicationCli.java)
-2. `mvn clean install && java -jar target/arraysort-0.0.1-SNAPSHOT.jar`
+It basically looks like this. A `JSON` formatted string
+```json
+{"distances":
+[{"key":"cm","value":1.367},{"key":"km","value":-1.37},{"key":"mm","value":1},
+{"key":"mm","value":1},{"key":"km","value":1.976},{"key":"km","value":1.976}]}
+```
 
-![Alt text][mainclass]
-
-This command will build the project and execute the application.
+2. Run `java -jar target/sortutils-0.0.1-SNAPSHOT.jar`
 
 
 Executing the above command will produce the following output
 
 ```
-{
-  "count": 5,
-  "sortResult": "[1, 2, 3, 4, 5, 6, 7]",
+Raw list: {"distances":[{"key":"cm","value":1.367},{"key":"km","value":-1.37},{"key":"mm","value":1},{"key":"mm","value":1},{"key":"km","value":1.976},{"key":"km","value":1.976}]}
+Unique list: [13.67, -1370000.0, 1.0, 1976000.0]
+Sorted result: [-1370000.0, 1.0, 13.67, 1976000.0]
+Response payload: {
+  "count": 2,
+  "sortResult": "[-1370000.0, 1.0, 13.67, 1976000.0]",
   "runningTime": "0 ms",
-  "arraySize": 7
+  "arraySize": 4
 }
-2019-03-30 09:47:29,839 INFO  Array size: 7
-2019-03-30 09:47:29,839 INFO  Minimum iterations: 5
-2019-03-30 09:47:29,839 INFO  Sorted result: [1, 2, 3, 4, 5, 6, 7]
-2019-03-30 09:47:29,839 INFO  Running time: 0 ms
+
 ```
 
 >> 1. `count:` this is the minimum number of iterations.
@@ -95,13 +107,7 @@ This will compile, package and install the project. A JAR file called `arraysort
 at the end of this phase and the result is copied to `target` directory.
 
 
-Building and copying the dependencies
-----------------------------------------
-Run this command below to build and copy the dependencies to project `lib` directory.
 
-```shell
-mvn clean install -Dmaven.test.skip dependency:copy-dependencies
-```
 
 
 Running the tests.
@@ -137,22 +143,5 @@ Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
 
 ## Continuous integration
 Used Travis for continuous integration
-
-## Dependency injection
-Used spring dependency injection framework
-
-
-
-## A case for recursion
-
-[Are there advantages for using recursion over iteration - other than sometimes readability and elegance? [duplicate]](https://softwareengineering.stackexchange.com/questions/242889/are-there-advantages-for-using-recursion-over-iteration-other-than-sometimes-r)
-
-[What are the advantages of recursion compared to iteration? [duplicate]](https://softwareengineering.stackexchange.com/questions/234962/what-are-the-advantages-of-recursion-compared-to-iteration)
-
-[Recursion or while loops](https://softwareengineering.stackexchange.com/questions/182314/recursion-or-while-loops)
-
-
-[Are recursive methods always better than iterative methods in Java? [closed]](https://stackoverflow.com/questions/15346774/are-recursive-methods-always-better-than-iterative-methods-in-java)
-
 
 [mainclass]: mainclass.png "Logo Title Text 2"
