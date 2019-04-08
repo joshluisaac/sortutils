@@ -59,7 +59,8 @@ It basically looks like this. A `JSON` formatted string
 {"key":"mm","value":1},{"key":"km","value":1.976},{"key":"km","value":1.976}]}
 ```
 
-2. Run `java -jar target/sortutils-0.0.1-SNAPSHOT.jar`
+2. Run `java -jar target/sortutils-0.0.1-SNAPSHOT.jar
+       "{\"distances\":[{\"key\":\"cm\",\"value\":1.367},{\"key\":\"km\",\"value\":-1.37},{\"key\":\"mm\",\"value\":1}]}"`
 
 
 Executing the above command will produce the following output
