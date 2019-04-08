@@ -7,7 +7,6 @@ import com.sortutils.entity.DistanceUnitType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +57,6 @@ public class MapperUtils {
         }
         return  maybeDuplicate;
     }
-
 
 
     /**

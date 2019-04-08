@@ -3,7 +3,10 @@
 
 
 The intent of this project is to allow the user to sort a collection of distances in the most efficient way.
-Efficient in this context is defined in terms of time and space complexity.
+Efficient in this context is defined in terms of time and space complexity. It will first convert all distances (provided the distances are
+any of `km,m,cm,mm`) into the same base unit. I have chosen millimeters(mm) as the lowest common denominator. All units are converted into mm
+before sorting is executed.
+
 
 I scoped the problem as a merge and insertion sort problem and implemented the merge sort in accordance to the
 divide and conquer algorithm that was proposed and invented by John von Neumann in 1945.
@@ -177,7 +180,20 @@ This will run all the tests in `src/test/java` directory and you will see an out
 
 ## Test logs
 ```
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running MergeSortTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.329 sec
+Running InsertionSortTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
+Running InputValidationParserTest
+2019-04-08 17:11:14,560 ERROR {"distances"[{"key":"cm","value":1.367},{"key":"km","value":-1.37},{"key":"km","value":1.976}]} is not a valid JSON formatted string.
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.079 sec
 
+Results :
+
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0
 
 ```
 
