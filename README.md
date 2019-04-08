@@ -65,7 +65,8 @@ It basically looks like this. A `JSON` formatted string
 Executing the above command will produce the following output
 
 ```
-Raw list: {"distances":[{"key":"cm","value":1.367},{"key":"km","value":-1.37},{"key":"mm","value":1},{"key":"mm","value":1},{"key":"km","value":1.976},{"key":"km","value":1.976}]}
+Raw list: {"distances":[{"key":"cm","value":1.367},{"key":"km","value":-1.37},{"key":"mm","value":1},
+                      {"key":"mm","value":1},{"key":"km","value":1.976},{"key":"km","value":1.976}]}
 Unique list: [13.67, -1370000.0, 1.0, 1976000.0]
 Sorted result: [-1370000.0, 1.0, 13.67, 1976000.0]
 Response payload: {
