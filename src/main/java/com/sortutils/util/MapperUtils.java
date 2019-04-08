@@ -22,7 +22,7 @@ public class MapperUtils {
     /**
      * Maps a {@link Distance} to an array doubles which are of the same type
      * @param distance
-     * @return array of primitive type double.
+     * @return list of doubles.
      */
     public List<Double> map(Distance distance){
         int size = distance.getDistances().size();
@@ -34,22 +34,18 @@ public class MapperUtils {
             if (distanceMap.key.equals(DistanceUnitType.KM.getCode())) {
                 double d = Double.parseDouble(distanceMap.getValue().toString()) * 1000000;
                 maybeDuplicate.add(d);
-                //arr[i] = d;
             }
             if (distanceMap.key.equals(DistanceUnitType.M.getCode())) {
                 double d = Double.parseDouble(distanceMap.getValue().toString()) * 1000;
                 maybeDuplicate.add(d);
-                //arr[i] = d;
             }
             if (distanceMap.key.equals(DistanceUnitType.CM.getCode())) {
                 double d = Double.parseDouble(distanceMap.getValue().toString()) * 10;
                 maybeDuplicate.add(d);
-                //arr[i] = d;
             }
             if (distanceMap.key.equals(DistanceUnitType.MM.getCode())) {
                 double d = Double.parseDouble(distanceMap.getValue().toString()) * 1;
                 maybeDuplicate.add(d);
-                //arr[i] = d;
             }
         }
         return  maybeDuplicate;
