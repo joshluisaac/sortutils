@@ -87,8 +87,6 @@ Response payload: {
 >>> 4. `arraySize`: the size of the input array after removing duplicates.
 
 
-
-
 Building the API docs
 ---------------------
 
@@ -107,11 +105,8 @@ Building the source code without tests
 mvn clean install -Dmaven.test.skip=true
 ```
 
-This will compile, package and install the project. A JAR file called `arraysort-0.0.1-SNAPSHOT.jar` is generated
+This will compile, package and install the project. A JAR file called `sortutils-0.0.1-SNAPSHOT.jar` is generated
 at the end of this phase and the result is copied to `target` directory.
-
-
-
 
 
 Running the tests.
@@ -128,19 +123,7 @@ This will run all the tests in `src/test/java` directory and you will see an out
 
 ## Test logs
 ```
--------------------------------------------------------
- T E S T S
--------------------------------------------------------
-Running unittests.MergeSortTest
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.286 sec
-Running unittests.SortServiceTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec
-Running unittests.InsertionSortTest
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
 
-Results :
-
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
 
 ```
 
