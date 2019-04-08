@@ -45,6 +45,39 @@ Run this command below to build and copy the dependencies to project `lib` direc
 mvn clean install dependency:copy-dependencies
 ```
 
+This command will produce an output like this below.
+
+```
+INFO] --- maven-dependency-plugin:3.1.1:copy-dependencies (copy-dependencies) @ sortutils ---
+[INFO] Copying groovy-all-2.4.15.jar to /media/joshua/martian/projects/sortutils/lib/groovy-all-2.4.15.jar
+[INFO] Copying slf4j-api-1.7.22.jar to /media/joshua/martian/projects/sortutils/lib/slf4j-api-1.7.22.jar
+[INFO] Copying gson-2.8.5.jar to /media/joshua/martian/projects/sortutils/lib/gson-2.8.5.jar
+[INFO] Copying logback-classic-1.1.11.jar to /media/joshua/martian/projects/sortutils/lib/logback-classic-1.1.11.jar
+[INFO] Copying logback-core-1.1.11.jar to /media/joshua/martian/projects/sortutils/lib/logback-core-1.1.11.jar
+[INFO]
+[INFO] --- maven-shade-plugin:3.2.1:shade (default) @ sortutils ---
+[INFO] Including org.codehaus.groovy:groovy-all:jar:2.4.15 in the shaded jar.
+[INFO] Including ch.qos.logback:logback-classic:jar:1.1.11 in the shaded jar.
+[INFO] Including ch.qos.logback:logback-core:jar:1.1.11 in the shaded jar.
+[INFO] Including org.slf4j:slf4j-api:jar:1.7.22 in the shaded jar.
+[INFO] Including com.google.code.gson:gson:jar:2.8.5 in the shaded jar.
+[INFO] Replacing original artifact with shaded artifact.
+[INFO] Replacing /media/joshua/martian/projects/sortutils/target/sortutils-0.0.1-SNAPSHOT.jar with /media/joshua/martian/projects/sortutils/target/sortutils-0.0.1-SNAPSHOT-shaded.jar
+[INFO] Dependency-reduced POM written at: /media/joshua/martian/projects/sortutils/dependency-reduced-pom.xml
+[INFO]
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ sortutils ---
+[INFO] Installing /media/joshua/martian/projects/sortutils/target/sortutils-0.0.1-SNAPSHOT.jar to /home/joshua/.m2/repository/com/sortutils/sortutils/0.0.1-SNAPSHOT/sortutils-0.0.1-SNAPSHOT.jar
+[INFO] Installing /media/joshua/martian/projects/sortutils/dependency-reduced-pom.xml to /home/joshua/.m2/repository/com/sortutils/sortutils/0.0.1-SNAPSHOT/sortutils-0.0.1-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2.900 s
+[INFO] Finished at: 2019-04-08T16:18:33+10:00
+[INFO] ------------------------------------------------------------------------
+
+
+```
+
 After building you will find the complied jar loated in `target/sortutils-0.0.1-SNAPSHOT.jar`
 
 Executing the application
