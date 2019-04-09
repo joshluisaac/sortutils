@@ -4,7 +4,6 @@ import com.sortutils.entity.SortResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 /**
  * An implementation of {@link} that contains methods for performing merge sort.
  *
@@ -22,8 +21,8 @@ import org.slf4j.LoggerFactory;
  * @since April 2019
  */
 
-//@Component("MergeSort")
-//@Qualifier("MergeSort")
+// @Component("MergeSort")
+// @Qualifier("MergeSort")
 public class MergeSort extends AbstractSort implements IMergeSort {
 
     private static final Logger LOG = LoggerFactory.getLogger(MergeSort.class);
@@ -101,7 +100,7 @@ public class MergeSort extends AbstractSort implements IMergeSort {
 
     // @Override
     public double[] sort(double[] arr) {
-        /* base case condition */
+        /* recursion stopping/exit base case condition */
         if (arr.length <= 1)
             return arr;
 
@@ -176,9 +175,9 @@ public class MergeSort extends AbstractSort implements IMergeSort {
      */
     @Override
     public SortResponse execute(double[] arr) {
-    SortResponse response = super.execute(arr);
-    response.setCount(count);
-    return response;
+        SortResponse response = super.execute(arr);
+        response.setCount(count);
+        return response;
     }
 
 }
