@@ -11,8 +11,11 @@ Create an application that can sort a list of distances (in ascending order base
 REQ 01. the application should receive an unsorted list passed into the system.
 
 > Q0. What is the size of the request payload? Knowing this would dictate how the payload is served in the event that it is served up via HTTP request. Consider creating a custom header or appending this to the request body.
+
 > Q1. How should the list be fed into the system? Via terminal/command line, HTTP/RESTFul request payload etc..
+
 > Q2. How should the payload/list be formatted? raw string, ASCII/fixed length, CSV, pipe delimited, JSON, XML etc..
+
 > Q3. Should there be an encoding/encryption process in place if request is via HTTP?
 
 ### Duplication and data redundancy.
