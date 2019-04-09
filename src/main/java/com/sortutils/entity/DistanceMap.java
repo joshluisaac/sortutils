@@ -11,8 +11,8 @@ package com.sortutils.entity;
 
 public class DistanceMap<K, V> {
 
-    public K key;
-    public V value;
+    private K key;
+    private V value;
 
     public DistanceMap(K key, V value) {
         this.key = key;
