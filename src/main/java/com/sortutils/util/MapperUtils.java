@@ -5,6 +5,8 @@ import com.sortutils.entity.Distance;
 import com.sortutils.entity.DistanceMap;
 import com.sortutils.entity.DistanceUnitType;
 import com.sortutils.handler.DistanceHandlerFactory;
+import com.sortutils.handler.Handler;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,7 +36,8 @@ public class MapperUtils {
         final List<DistanceMap> list = distance.getDistances();
         final List<Double> maybeDuplicate = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            DistanceHandlerFactory.applyHandler(list.get(i),maybeDuplicate);
+        	Handler handler = new DistanceHandlerFactory().getHandler(list.get(i),maybeDuplicate);
+        	handler.apply();
         }
         return  maybeDuplicate;
     }

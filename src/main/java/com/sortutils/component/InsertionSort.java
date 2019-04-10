@@ -62,7 +62,7 @@ public class InsertionSort extends AbstractSort implements InstrumentationSort {
             double currVal = arr[i];
             double prevVal = arr[i - 1];
             count++;
-            //if the current item is greater than the previous then call swap method.
+            //if the current item is less than the previous then call swap method.
             if ((currVal < prevVal)) swapUntilSortedState(arr, i);
         }
         return arr;
