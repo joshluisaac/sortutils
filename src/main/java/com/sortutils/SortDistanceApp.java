@@ -19,60 +19,59 @@ public class SortDistanceApp {
     private static final Logger LOG = LoggerFactory.getLogger(SortDistanceApp.class);
     private final InstrumentationSort instrumentationSort;
 
-    public SortDistanceApp(InstrumentationSort instrumentationSort){
+    public SortDistanceApp(InstrumentationSort instrumentationSort) {
         this.instrumentationSort = instrumentationSort;
     }
 
-    public SortResponse execute(double[] arr){
+    public SortResponse execute(double[] arr) {
         return instrumentationSort.execute(arr);
     }
 
     /**
-     * Tuning parameter: list size at or below which insertion sort will be
-     * used in preference to mergesort.
+     * Tuning parameter: list size at or below which insertion sort will be used in
+     * preference to mergesort.
      */
     private static final int INSERTIONSORT_THRESHOLD = 7;
 
-
     public static void main(String[] args) {
 
-        String maybeJson = args[0];
+        String rawJsonString = args[0];
 
         /* Parse and validate input string */
-        boolean isValidJson = InputValidationParser.isValidJson(maybeJson);
+        boolean isValidJson = InputValidationParser.isValidJson(rawJsonString);
 
-        if (isValidJson){
+        if (isValidJson) {
             MapperUtils mapperUtils = new MapperUtils();
 
-            //deserialize raw json document to custom type
-            Distance distance = mapperUtils.deserialize(maybeJson);
+            // deserialize raw json document to custom type
+            Distance distance = mapperUtils.deserialize(rawJsonString);
 
-            //remove duplicates
-            List<Double> unique = new DistanceUtils().unique(mapperUtils.map(distance));
+            // map distance to list of same types.
+            List<Double> distances = mapperUtils.map(distance);
 
-            System.out.println("Raw list: " + maybeJson);
+            // remove duplicates
+            List<Double> unique = new DistanceUtils().unique(distances);
+
+            System.out.println("Raw list: " + rawJsonString);
             System.out.println("Unique list: " + unique.toString());
 
-            //map distance to same types to facilitate comparison
+            // map distance to an array of doubles to facilitate comparison and sorting.
+            // sorting performs best with array data structure.
             double[] arr = mapperUtils.toArray(unique);
 
-            //sort response
+            // sort response
             SortResponse response;
 
-            if(arr.length < INSERTIONSORT_THRESHOLD) {
-                response =  new SortDistanceApp(new InsertionSort()).execute(arr);
+            if (arr.length < INSERTIONSORT_THRESHOLD) {
+                response = new SortDistanceApp(new InsertionSort()).execute(arr);
             } else {
-                response =  new SortDistanceApp(new MergeSort()).execute(arr);
+                response = new SortDistanceApp(new MergeSort()).execute(arr);
             }
             System.out.println("Sorted result: " + response.sortResult);
             System.out.println("Response payload: " + new JsonUtils().toJson(response));
         } else {
-            LOG.error("{} is not a valid JSON formatted string.", maybeJson);
+            LOG.error("{} is not a valid JSON formatted string.", rawJsonString);
         }
-
-
-
-
 
     }
 
