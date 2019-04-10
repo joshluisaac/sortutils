@@ -36,9 +36,11 @@ REQ 03: Appropriate error handling should be considered for obvious failure case
 
 ## Design phase
 
+0. Input validation: Parse & validate if the passed input is actually JSON formatted. Proceed it is or exit it isn't. Consider implementing a method like this `public static boolean isValidJson(final String maybeJson){}` in some `InputValidationParser` class
+
 1. The request payload is a list of distances. Distance could be measured in various metric units `(KM, M, CM, MM, Feet, Inch, Yard, Mile, Nautical Mile...)` the question is silent as to how many units must be supported. I followed Occam's razor problem-solving principle that recommends going with simplier solutions than very complex ones. I decided to be very specific on which units this solution will support as opposed to developing a generic/generalistic one. Yes, distances would be measured in feet, inch, yard..but this is rare. I chose `KM,M,CM,MM`
 
-Off the top of my head, I'm looking at an input like this
+**What am i thinking right now**: Off the top of my head, I'm looking at an input like this
 
 ```json
 {
@@ -71,6 +73,16 @@ Off the top of my head, I'm looking at an input like this
 }
 ```
 
-> Create an enum class which will serve as a constant or reference for looking up the various support units. `DistanceUnitType.java`
+> Create an enum class which will be a reference for looking up the various supported units. `DistanceUnitType.java`
 
-> Create a Distance class
+> Create a Distance map class which will take a key/value pairs. Each distance value is associated with a unit. `DistanceMap.java`
+
+> Create a Distance class which is a representation of the entire distance model. That is a list of distance maps, `List<DistanceMap>`. Call this `Distance.java`
+
+2. The raw JSON payload is a serialized form. That is, it currently exists in a file system on disk or a memory buffer. I will need to do some deserialization to plain Java objects.
+
+> Deserialize from `JSON` formatted string to `Distance` object. I'm looking at something along these lines `public Distance deserialize(String jsonText){}`
+
+3. Remove duplicates `public <T> List<T> unique(List<T> list){}`
+
+4.
