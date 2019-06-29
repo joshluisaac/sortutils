@@ -1,0 +1,114 @@
+{
+  "event": {
+    "exec": [
+      {
+        "conditions": {
+          "condition": {
+            "_lhsfield": "EFFECTIVE_DATE",
+            "_operator": "is empty",
+            "_rhsvalue": ""
+          }
+        },
+        "exec": {
+          "_ceiling": "false",
+          "_endmonth": "false",
+          "_nextweekday": "false",
+          "_startmonth": "false",
+          "_to": "EFFECTIVE_DATE",
+          "_truncate": "true",
+          "_type": "date"
+        },
+        "_type": "guard"
+      },
+      {
+        "conditions": {
+          "condition": {
+            "_lhsfield": "PRODUCT_TYPE_FILTER",
+            "_operator": "is not empty",
+            "_rhsvalue": ""
+          }
+        },
+        "exec": {
+          "_from": "PRODUCT_TYPE_FILTER",
+          "_to": "PRODUCT_CATEGORY_ID",
+          "_type": "copy"
+        },
+        "_type": "guard"
+      },
+      {
+        "conditions": {
+          "condition": {
+            "_lhsfield": "TREE_TYPE_FILTER",
+            "_operator": "is not empty",
+            "_rhsvalue": ""
+          }
+        },
+        "exec": {
+          "_from": "TREE_TYPE_FILTER",
+          "_to": "TYPE_ID",
+          "_type": "copy"
+        },
+        "_type": "guard"
+      },
+      {
+        "conditions": {
+          "condition": {
+            "_lhsfield": "TREE_ID",
+            "_operator": "is not empty",
+            "_rhsvalue": ""
+          }
+        },
+        "exec": {
+          "_statement": "getWlTreeDocumentId",
+          "_type": "select"
+        },
+        "_type": "guard"
+      },
+      {
+        "exec": {
+          "conditions": {
+            "condition": {
+              "_lhsfield": "WLG_TYPE_CODE",
+              "_operator": "=",
+              "_rhsvalue": "PRE_IL_WLG"
+            }
+          },
+          "exec": [
+            {
+              "exec": {
+                "_event": "wlg.executePreIlHp",
+                "_ignoreresult": "true",
+                "_type": "raise"
+              },
+              "_text": "Execute PL Pre IL",
+              "_type": "comment"
+            },
+            {
+              "exec": {
+                "_event": "wlg.executePreIlUpl",
+                "_ignoreresult": "true",
+                "_type": "raise"
+              },
+              "_text": "Execute UPL Pre IL",
+              "_type": "comment"
+            },
+            {
+              "exec": {
+                "_event": "wlg.executePreIlMg",
+                "_ignoreresult": "true",
+                "_type": "raise"
+              },
+              "_text": "Execute MG Pre IL",
+              "_type": "comment"
+            }
+          ],
+          "_type": "guard"
+        },
+        "_text": "Evaluate Pre - IL Accounts",
+        "_type": "comment"
+      }
+    ],
+    "_transactional": "false",
+    "_type": "event"
+  }
+}
